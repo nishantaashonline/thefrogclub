@@ -21,7 +21,12 @@
     <link rel="stylesheet" href="{{asset('assets/css/uikit.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
      <link href="{{asset('assets/unpkg.com/tailwindcss%402.2.19/dist/tailwind.min.css')}}" rel="stylesheet">
-</head>
+<style>
+    input {
+        background-color: #f3f4f6 !important;
+}
+</style>
+    </head>
 <body>
 @include('frontend.includes.profileheader')
      {{--   <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
