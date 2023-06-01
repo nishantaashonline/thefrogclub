@@ -8,6 +8,14 @@
             <h2 class="text-2xl font-semibold"> Add Family Member </h2>
 
         </div>
+        @if (\Session::has('success'))
+        <div class="alert alert-success" role="alert">
+
+            {!! \Session::get('success') !!}
+
+    </div>
+@endif
+
         <form action="{{route('member.store')}}" method="post" enctype="multipart/form-data">
             @csrf
         <div class="grid lg:grid-cols-2 mt-12 gap-8">

@@ -92,6 +92,6 @@ class FamilyController extends Controller
         $data['user_id'] = $id;
         FamilyMember::create($data);
 
-        return redirect()->route('home');
+        return redirect()->back()->with('success', 'member add successful');
     }
 }
