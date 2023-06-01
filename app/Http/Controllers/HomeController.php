@@ -42,7 +42,8 @@ class HomeController extends Controller
 
         }
         User::whereId($id)->update($data);
-        return view('frontend.profile.add-grand-father');
+        return redirect()->route('addgrandfather');
+        // return view('frontend.profile.add-grand-father');
     }
 
 
