@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\FamilyController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,6 +39,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/store-father', [HomeController::class, 'storefather'])->name('storefather');
     Route::get('/add-mother', [HomeController::class, 'addmother'])->name('addmother');
     Route::post('/store-mother', [HomeController::class, 'storemother'])->name('storemother');
+    Route::get('/family-member', [FamilyController::class, 'familylist'])->name('familymember');
+    Route::get('/add-member', [FamilyController::class, 'addmember'])->name('addmember');
+    Route::post('/memberstore', [FamilyController::class, 'memberstore'])->name('member.store');
 
 });
 
