@@ -214,7 +214,7 @@
                         <div class="form-group">
                             <textarea name="message" class="form-control" placeholder="Write something here..."></textarea>
                             <img id="output" class="mt-2"/>
-                            <video id="video-output" class="mt-2 w-100 d-none"></video>
+                            <video id="video-output" class="mt-2 w-100" controls style="display: none"></video>
                         </div>
                         <ul class="button-group d-flex justify-content-between align-items-center">
                             <li class="photo-btn">
@@ -223,7 +223,7 @@
                             </li>
                             <li class="video-btn">
                                 <label for="videoselect" class="cursor-pointer"><i class="flaticon-video i-video"></i> Video</label>
-                                <input type="file" name="video" id="videoselect" class="d-none" accept="video/mp4,video/mkv, video/x-m4v,video/*" onchange="loadFile(event)">
+                                <input type="file" name="video" id="videoselect" class="d-none" accept="video/mp4,video/mkv, video/x-m4v,video/*">
                             </li>
                             <li class="tag-btn">
                                 <button type="submit"><i class="flaticon-tag"></i> Tag Friends</button>
