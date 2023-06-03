@@ -9013,4 +9013,16 @@ Profile Authentication Area CSS
 .btn-p{
     padding: 15px 50px;
 }
+.i-photo{
+   color: #1CCD16;
+
+}
+.i-video{
+    color: #FF3E3E;
+
+}
+.cursor-pointer{
+
+   cursor: pointer;
+}
 /*# sourceMappingURL=style.css.map */
