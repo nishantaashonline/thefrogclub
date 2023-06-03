@@ -449,13 +449,19 @@
                                 <a href="#">More Comments+</a>
                             </div>
                         </div>
-                        <form class="post-footer">
+                        <form class="post-footer"  method="post">
+                            @csrf
+                            <input type="hidden" name="post_id" value="{{$post->id}}">
                             <div class="footer-image">
-                                <a href="#"><img src="assets/images/user/user-1.jpg" class="rounded-circle" alt="image"></a>
+                                <a href="#">
+                                    <img src="assets/images/user/user-1.jpg" class="rounded-circle" alt="image">
+                                </a>
                             </div>
                             <div class="form-group">
-                                <textarea name="message" class="form-control" placeholder="Write a comment..."></textarea>
-                                <label><a href="#"><i class="flaticon-photo-camera"></i></a></label>
+                                <textarea name="comment" class="form-control" placeholder="Write a comment..." required>
+
+                                </textarea>
+                                <label><button type="submit"><i class="flaticon-comment-1"></i></button></label>
                             </div>
                         </form>
                     </div>
