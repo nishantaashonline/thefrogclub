@@ -33,7 +33,7 @@
     <link rel="icon" type="image/png" href="{{asset('assets/images/favicon.png')}}">
     </head>
 <body>
-  @include('frontend.includes.header');
+  @include('frontend.includes.header')
   @include('frontend.includes.sidebar')
      {{--   <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -89,7 +89,7 @@
             </div>
         </nav>  --}}
 
-        <main class="py-4">
+        <main class="">
             @yield('content')
         </main>
 @include('frontend.includes.footer')
