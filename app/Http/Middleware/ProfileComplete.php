@@ -17,29 +17,29 @@ class ProfileComplete
      */
     public function handle(Request $request, Closure $next): Response
     {
-$family=FamilyMember::where('user_id',auth()->user()->id)->first();
+    $family=FamilyMember::where('user_id',auth()->user()->id)->first();
 
         if(auth()->user()->birth_city!=null){
-            if($family!=null){
-                $father=FamilyMember::where('user_id',auth()->user()->id)->where('relation','father')->first();
-                if($father!=null){
-                    $mother=FamilyMember::where('user_id',auth()->user()->id)->where('relation','mother')->first();
+            // if($family!=null){
+            //     $father=FamilyMember::where('user_id',auth()->user()->id)->where('relation','Father')->first();
+            //     if($father!=null){
+            //         $mother=FamilyMember::where('user_id',auth()->user()->id)->where('relation','Mother')->first();
 
-                    if($mother!=null){
-                        return $next($request);
+            //         if($mother!=null){
+            //             return $next($request);
 
-                    }else{
-                        return redirect()->route('addmother');
-                    }
+            //         }else{
+            //             return redirect()->route('addmother');
+            //         }
 
-                }else{
-                    return redirect()->route('addfather');
-                }
+            //     }else{
+            //         return redirect()->route('addfather');
+            //     }
 
-            }else{
-                return redirect()->route('addgrandfather');
-            }
-
+            // }else{
+            //     return redirect()->route('addgrandfather');
+            // }
+            return $next($request);
         }else{
             return redirect('basic-profile')->with('error',"You don't have admin access.");
         }

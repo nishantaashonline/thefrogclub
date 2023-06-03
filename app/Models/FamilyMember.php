@@ -20,6 +20,8 @@ class FamilyMember extends Model
         'birth_city',
         'birth_state',
         'birth_country',
+        'married',
+        'gender',
     ];
 
 }
