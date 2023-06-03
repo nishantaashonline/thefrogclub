@@ -213,15 +213,17 @@
                     <form>
                         <div class="form-group">
                             <textarea name="message" class="form-control" placeholder="Write something here..."></textarea>
-                            <img id="output" />
+                            <img id="output" class="mt-2"/>
+                            <video id="video-output" class="mt-2 w-100 d-none"></video>
                         </div>
                         <ul class="button-group d-flex justify-content-between align-items-center">
                             <li class="photo-btn">
-                                <label for="photoselect"><i class="flaticon-gallery"></i> Photo</label>
-                                <input type="file" name="" id="photoselect" class="d-none" accept="image/gif, image/jpeg, image/png" onchange="loadFile(event)">
+                                <label for="photoselect" class="cursor-pointer"><i class="flaticon-gallery i-photo"></i> Photo</label>
+                                <input type="file" name="image" id="photoselect" class="d-none" accept="image/gif, image/jpeg, image/png" onchange="loadFile(event)">
                             </li>
                             <li class="video-btn">
-                                <button type="submit"><i class="flaticon-video"></i> Video</button>
+                                <label for="videoselect" class="cursor-pointer"><i class="flaticon-video i-video"></i> Video</label>
+                                <input type="file" name="video" id="videoselect" class="d-none" accept="video/mp4,video/mkv, video/x-m4v,video/*" onchange="loadFile(event)">
                             </li>
                             <li class="tag-btn">
                                 <button type="submit"><i class="flaticon-tag"></i> Tag Friends</button>
@@ -1043,5 +1045,17 @@
         var image = document.getElementById('output');
         image.src = URL.createObjectURL(event.target.files[0]);
     };
+
+
+    const inputFile = document.getElementById("videoselect");
+const video = document.getElementById("video-output");
+
+inputFile.addEventListener("change", function(){
+    const file = inputFile.files[0];
+    const videourl = URL.createObjectURL(file);
+    video.style.display = "initial";
+    video.setAttribute("src", videourl);
+    // video.play();
+})
     </script>
     @endsection
