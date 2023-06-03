@@ -80,6 +80,7 @@
 
                         <div class="card lg:mx-0 uk-animation-slide-bottom-small">
 
+<<<<<<< Updated upstream
                             <!-- post header-->
                             <div class="flex justify-between items-center lg:p-4 p-2.5">
                                 <div class="flex flex-1 items-center space-x-4">
@@ -136,6 +137,86 @@
                                     <img src="assets/images/avatars/avatar-lg-4.jpg" alt="" class="max-h-96 w-full object-cover">
                                 </a>
                             </div>
+=======
+                        <div class="info">
+                            <h4 class="title">
+                                <a href="#">UX/UI Design Group</a>
+                            </h4>
+                            <span>5000+ Members</span>
+                            <a href="#" class="join-btn">Join Community</a>
+                        </div>
+                    </article>
+                    <article class="item">
+                        <a href="#" class="thumb">
+                            <span class="fullimage bg2" role="img"></span>
+                        </a>
+
+                        <div class="info">
+                            <h4 class="title">
+                                <a href="#">Job Search Group</a>
+                            </h4>
+                            <span>5000+ Members</span>
+                            <a href="#" class="join-btn">Join Community</a>
+                        </div>
+                    </article>
+                    <article class="item">
+                        <a href="#" class="thumb">
+                            <span class="fullimage bg3" role="img"></span>
+                        </a>
+
+                        <div class="info">
+                            <h4 class="title">
+                                <a href="#">Photography Group</a>
+                            </h4>
+                            <span>5000+ Members</span>
+                            <a href="#" class="join-btn">Join Community</a>
+                        </div>
+                    </article>
+                </div>
+            </aside>
+        </div>
+
+        <div class="col-lg-6 col-md-12">
+            <div class="news-feed-area">
+                <div class="news-feed news-feed-form">
+                    <h3 class="news-feed-title">Create New Post</h3>
+
+                    <form>
+                        <div class="form-group">
+                            <textarea name="message" class="form-control" placeholder="Write something here..."></textarea>
+                        </div>
+                        <ul class="button-group d-flex justify-content-between align-items-center">
+                            <li class="photo-btn">
+                                <button type="submit"><i class="flaticon-gallery"></i> Photo</button>
+                            </li>
+                            <li class="video-btn">
+                                <button type="submit"><i class="flaticon-video"></i> Video</button>
+                            </li>
+                            <li class="tag-btn">
+                                <button type="submit"><i class="flaticon-tag"></i> Tag Friends</button>
+                            </li>
+                            <li class="post-btn">
+                                <button type="submit">Post</button>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+
+                <div class="news-feed news-feed-stories">
+                    <div class="stories-title d-flex justify-content-between align-items-center">
+                        <h3>Suggetions</h3>
+                        <span><a href="#">See All</a></span>
+                    </div>
+
+                    <div class="responsive">
+                        <div><h3>1</h3></div>
+                        <div><h3>2</h3></div>
+                        <div><h3>3</h3></div>
+                        <div><h3>4</h3></div>
+                        <div><h3>5</h3></div>
+                      </div>
+                </div>
+>>>>>>> Stashed changes
 
 
                             <div class="p-4 space-y-3">
@@ -1221,9 +1302,135 @@
         </div>
     </div>
 
+<<<<<<< Updated upstream
     <!-- For Night mode -->
 
     <!-- Javascript
     ================================================== -->
 
 @endsection
+=======
+    <div class="recent-contact-box">
+        <div class="title">
+            <h3>Contact</h3>
+        </div>
+        <div class="contact-search-box">
+            <form>
+                <input type="text" class="input-search" placeholder="Search">
+                <button type="submit"><i class="ri-search-line"></i></button>
+            </form>
+        </div>
+        <div class="contact-body" data-simplebar>
+            <div class="contact-item">
+                <a href="#"><img src="assets/images/user/user-18.jpg" class="rounded-circle" alt="image"></a>
+                <span class="name"><a href="#">Karen Williams</a></span>
+                <span class="status-online"></span>
+            </div>
+            <div class="contact-item">
+                <a href="#"><img src="assets/images/user/user-4.jpg" class="rounded-circle" alt="image"></a>
+                <span class="name"><a href="#">Mary A. Schwarz</a></span>
+                <span class="status-online"></span>
+            </div>
+            <div class="contact-item">
+                <a href="#"><img src="assets/images/user/user-20.jpg" class="rounded-circle" alt="image"></a>
+                <span class="name"><a href="#">Rex Carruth</a></span>
+                <span class="status-online"></span>
+            </div>
+            <div class="contact-item">
+                <a href="#"><img src="assets/images/user/user-11.jpg" class="rounded-circle" alt="image"></a>
+                <span class="name"><a href="#">James Vanwinkle</a></span>
+                <span class="status-online"></span>
+            </div>
+            <div class="contact-item">
+                <a href="#"><img src="assets/images/user/user-19.jpg" class="rounded-circle" alt="image"></a>
+                <span class="name"><a href="#">Oscar Thompson</a></span>
+                <span class="status-offline"></span>
+            </div>
+            <div class="contact-item">
+                <a href="#"><img src="assets/images/user/user-12.jpg" class="rounded-circle" alt="image"></a>
+                <span class="name"><a href="#">Harry Lopez</a></span>
+                <span class="status-online"></span>
+            </div>
+            <div class="contact-item">
+                <a href="#"><img src="assets/images/user/user-21.jpg" class="rounded-circle" alt="image"></a>
+                <span class="name"><a href="#">Frank S. Arena</a></span>
+                <span class="status-offline"></span>
+            </div>
+            <div class="contact-item">
+                <a href="#"><img src="assets/images/user/user-16.jpg" class="rounded-circle" alt="image"></a>
+                <span class="name"><a href="#">Karen Williams</a></span>
+                <span class="status-online"></span>
+            </div>
+            <div class="contact-item">
+                <a href="#"><img src="assets/images/user/user-2.jpg" class="rounded-circle" alt="image"></a>
+                <span class="name"><a href="#">Mary A. Schwarz</a></span>
+                <span class="status-online"></span>
+            </div>
+            <div class="contact-item">
+                <a href="#"><img src="assets/images/user/user-14.jpg" class="rounded-circle" alt="image"></a>
+                <span class="name"><a href="#">Rex Carruth</a></span>
+                <span class="status-offline"></span>
+            </div>
+            <div class="contact-item">
+                <a href="#"><img src="assets/images/user/user-18.jpg" class="rounded-circle" alt="image"></a>
+                <span class="name"><a href="#">James Vanwinkle</a></span>
+                <span class="status-online"></span>
+            </div>
+            <div class="contact-item">
+                <a href="#"><img src="assets/images/user/user-5.jpg" class="rounded-circle" alt="image"></a>
+                <span class="name"><a href="#">Oscar Thompson</a></span>
+                <span class="status-offline"></span>
+            </div>
+            <div class="contact-item">
+                <a href="#"><img src="assets/images/user/user-6.jpg" class="rounded-circle" alt="image"></a>
+                <span class="name"><a href="#">Harry Lopez</a></span>
+                <span class="status-online"></span>
+            </div>
+            <div class="contact-item">
+                <a href="#"><img src="assets/images/user/user-7.jpg" class="rounded-circle" alt="image"></a>
+                <span class="name"><a href="#">Frank S. Arena</a></span>
+                <span class="status-offline"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+$('.responsive').slick({
+  dots: true,
+  infinite: false,
+  speed: 300,
+  slidesToShow: 4,
+  slidesToScroll: 4,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
+});
+</script>
+    @endsection
+>>>>>>> Stashed changes
