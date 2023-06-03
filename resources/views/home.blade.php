@@ -80,7 +80,6 @@
 
                         <div class="card lg:mx-0 uk-animation-slide-bottom-small">
 
-<<<<<<< Updated upstream
                             <!-- post header-->
                             <div class="flex justify-between items-center lg:p-4 p-2.5">
                                 <div class="flex flex-1 items-center space-x-4">
@@ -137,7 +136,6 @@
                                     <img src="assets/images/avatars/avatar-lg-4.jpg" alt="" class="max-h-96 w-full object-cover">
                                 </a>
                             </div>
-=======
                         <div class="info">
                             <h4 class="title">
                                 <a href="#">UX/UI Design Group</a>
@@ -216,7 +214,6 @@
                         <div><h3>5</h3></div>
                       </div>
                 </div>
->>>>>>> Stashed changes
 
 
                             <div class="p-4 space-y-3">
@@ -1302,14 +1299,12 @@
         </div>
     </div>
 
-<<<<<<< Updated upstream
     <!-- For Night mode -->
 
     <!-- Javascript
     ================================================== -->
 
 @endsection
-=======
     <div class="recent-contact-box">
         <div class="title">
             <h3>Contact</h3>
@@ -1432,5 +1427,4 @@ $('.responsive').slick({
   ]
 });
 </script>
-    @endsection
->>>>>>> Stashed changes
+@endsection
