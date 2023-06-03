@@ -213,10 +213,12 @@
                     <form>
                         <div class="form-group">
                             <textarea name="message" class="form-control" placeholder="Write something here..."></textarea>
+                            <img id="output" />
                         </div>
                         <ul class="button-group d-flex justify-content-between align-items-center">
                             <li class="photo-btn">
-                                <button type="submit"><i class="flaticon-gallery"></i> Photo</button>
+                                <label for="photoselect"><i class="flaticon-gallery"></i> Photo</label>
+                                <input type="file" name="" id="photoselect" class="d-none" accept="image/gif, image/jpeg, image/png" onchange="loadFile(event)">
                             </li>
                             <li class="video-btn">
                                 <button type="submit"><i class="flaticon-video"></i> Video</button>
@@ -1035,4 +1037,11 @@
         </div>
     </div>
 </div>
+
+<script>
+    var loadFile = function(event) {
+        var image = document.getElementById('output');
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
+    </script>
     @endsection
