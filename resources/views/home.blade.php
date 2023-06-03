@@ -1,7 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    .bf::before{
+    background-image: none !important;
 
+    }
+</style>
 <div class="content-page-box-area">
     <div class="row">
         <div class="col-lg-3 col-md-12">
@@ -237,64 +242,58 @@
 
                 <div class="news-feed news-feed-stories">
                     <div class="stories-title d-flex justify-content-between align-items-center">
-                        <h3>Stories</h3>
+                        <h3>Suggetions</h3>
                         <span><a href="#">See All</a></span>
                     </div>
 
-                    <div class="row">
-                        <div class="col-lg-2 col-sm-4 col-4">
-                            <div class="stories-item">
-                                <div class="stories-image">
-                                    <a href="#">
-                                        <img src="assets/images/user/user-1.jpg" alt="image">
-                                    </a>
-                                    <div class="add-icon">
-                                        <a href="#"><i class="flaticon-add"></i></a>
+                    <div class="row responsive">
+                        @foreach ($suggetions as $suggetion)
+                        @php
+                            $img = DB::table('users')->where('id', $suggetion->relation_id)->first();
+                        @endphp
+                        <div class="col-lg-3 col-md-12">
+                            <aside class="widget-area mx-1">
+
+                                <div class="widget widget-view-profile bf">
+                                    <div class="profile-box d-flex justify-content-between align-items-center">
+                                       <img src="{{ asset('assets/images/frontend/images/'.$img->profile_img) }}" alt="image" style="width: -webkit-fill-available;">
+
+                                    </div>
+                                    <h6 class="text-center mt-2">{{ $suggetion->name }}</h6>
+                                    <ul class="profile-statistics">
+                                        <li>
+                                            <a href="#">
+                                                <span class="item-number">{{ $suggetion->relation }}</span>
+
+                                            </a>
+                                        </li>
+                                        <li>
+                                            @php
+                                                $per = round($suggetion->match_percentage);
+                                            @endphp
+                                            <a href="#">
+
+                                                <span class="item-number">{{ $per }} %</span>
+
+                                            </a>
+                                        </li>
+
+                                    </ul>
+
+                                    <div class="profile-btn">
+                                        <a href="my-profile.html" class="default-btn">Send Request</a>
                                     </div>
                                 </div>
-                                <span><a href="#">Add Story</a></span>
-                            </div>
+
+
+
+
+                            </aside>
                         </div>
-                        <div class="col-lg-2 col-sm-4 col-4">
-                            <div class="stories-item">
-                                <a href="#">
-                                    <img src="assets/images/user/user-28.jpg" alt="image">
-                                </a>
-                                <span><a href="#">Jimenez</a></span>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-sm-4 col-4">
-                            <div class="stories-item">
-                                <a href="#">
-                                    <img src="assets/images/user/user-29.jpg" alt="image">
-                                </a>
-                                <span><a href="#">Lolita</a></span>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-sm-4 col-4">
-                            <div class="stories-item">
-                                <a href="#">
-                                    <img src="assets/images/user/user-13.jpg" alt="image">
-                                </a>
-                                <span><a href="#">Matthew</a></span>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-sm-4 col-4">
-                            <div class="stories-item">
-                                <a href="#">
-                                    <img src="assets/images/user/user-30.jpg" alt="image">
-                                </a>
-                                <span><a href="#">Russell</a></span>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-sm-4 col-4">
-                            <div class="stories-item">
-                                <a href="#">
-                                    <img src="assets/images/user/user-31.jpg" alt="image">
-                                </a>
-                                <span><a href="#">Katzman</a></span>
-                            </div>
-                        </div>
+                        @endforeach
+
+
+
                     </div>
                 </div>
 
@@ -767,11 +766,7 @@
 
         <div class="col-lg-3 col-md-12">
             <aside class="widget-area">
-                <div class="widget widget-weather">
-                    <div class="weather-image">
-                        <a href="#"><img src="assets/images/weather/weather.jpg" alt="image"></a>
-                    </div>
-                </div>
+
                 <div class="widget widget-birthday">
                     <div class="birthday-title d-flex justify-content-between align-items-center">
                         <h3>Today Birthdays</h3>
@@ -802,34 +797,7 @@
                         </div>
                     </article>
 
-                    <div class="birthday-title d-flex justify-content-between align-items-center">
-                        <h3>Recent Birthdays</h3>
-                        <span><a href="#">See All</a></span>
-                    </div>
-                    <article class="item">
-                        <a href="#" class="thumb">
-                            <span class="fullimage bg3" role="img"></span>
-                        </a>
 
-                        <div class="info">
-                            <h4 class="title">
-                                <a href="#">Lolita Benally</a>
-                            </h4>
-                            <span>May 18</span>
-                        </div>
-                    </article>
-                    <article class="item">
-                        <a href="#" class="thumb">
-                            <span class="fullimage bg4" role="img"></span>
-                        </a>
-
-                        <div class="info">
-                            <h4 class="title">
-                                <a href="#">Russell Gulley</a>
-                            </h4>
-                            <span>May 20</span>
-                        </div>
-                    </article>
 
                     <div class="birthday-title d-flex justify-content-between align-items-center">
                         <h3>Coming Birthdays</h3>
@@ -1047,20 +1015,20 @@
   dots: true,
   infinite: false,
   speed: 300,
-  slidesToShow: 4,
-  slidesToScroll: 4,
+  slidesToShow: 3.2,
+  slidesToScroll: 1,
   responsive: [
     {
       breakpoint: 1024,
       settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3,
+        slidesToShow: 2,
+        slidesToScroll: 1,
         infinite: true,
         dots: true
       }
     },
     {
-      breakpoint: 600,
+      breakpoint: 778,
       settings: {
         slidesToShow: 2,
         slidesToScroll: 2
