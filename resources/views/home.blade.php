@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<<<<<<< HEAD
 @if (\Session::has('success'))
 <div class="alert alert-success" role="alert">
 
@@ -19,14 +18,12 @@
     </ul>
 </div>
 @endif
-=======
 <style>
     .bf::before{
     background-image: none !important;
 
     }
 </style>
->>>>>>> a58c4d62f819189e8c9cbb77b47cca6bdb95f32b
 <div class="content-page-box-area">
     <div class="row">
         <div class="col-lg-3 col-md-12">
