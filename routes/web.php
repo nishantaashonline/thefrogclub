@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\FamilyController;
+use App\Http\Controllers\Suggetions\SuggetionController;
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,6 +46,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/family-member', [FamilyController::class, 'familylist'])->name('familymember');
     Route::get('/add-member', [FamilyController::class, 'addmember'])->name('addmember');
     Route::post('/memberstore', [FamilyController::class, 'memberstore'])->name('member.store');
+
+
+    // Suggestins
+
+    Route::get('/suggetions', [SuggetionController::class, 'suggetions'])->name('suggetions');
+
+    // End Suggestins
 
 });
 
