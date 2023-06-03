@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Models\User;
 use App\Models\FamilyMember;
+use DB;
 class HomeController extends Controller
 {
     /**
@@ -25,7 +26,10 @@ class HomeController extends Controller
 
         $posts = User::where('users.id',Auth::user()->id)->join('posts', 'users.id', '=', 'posts.user_id')->orderBy('posts.id', 'desc')->get(['users.*', 'posts.*']);
 
-        return view('home',compact('posts'));
+
+        $user = Auth::user();
+        $suggetions = DB::table('suggetions')->where('user_id', $user->id)->get();
+        return view('home', compact('suggetions','posts'));
     }
     public function basicprofile()
     {

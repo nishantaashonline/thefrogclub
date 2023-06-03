@@ -37,6 +37,7 @@ class SuggetionController extends Controller
 
                 foreach ($wifes as $wife) {
                     if ($wife) {
+
                         $check = DB::table('family_members')
                             ->where('user_id', $wife->id)
                             ->where('relation', 'Husband')
@@ -44,6 +45,14 @@ class SuggetionController extends Controller
 
                         similar_text($user->name, $check->name, $percentage);
                         if ($percentage >= 70) {
+
+                            $sug_check = DB::table('suggetions')->where('user_id', $user->id)->where('relation_id', $wife->id)->first();
+
+                            if(!$sug_check){
+                                DB::table('suggetions')->insert(array('user_id' => $user->id, 'relation_id' => $wife->id, 'match_percentage' => $percentage ,'name' =>$wife->name, 'relation' => 'Wife'));
+                            }
+
+
                             $final_suggetions['wife'] =  $wife->name;
                             $final_suggetions['wife %'] = $percentage;
 
@@ -73,6 +82,11 @@ class SuggetionController extends Controller
                             foreach($check as $br){
                                 similar_text($user->name, $br->name, $percentage);
                                 if ($percentage >= 70) {
+                                    $sug_check = DB::table('suggetions')->where('user_id', $user->id)->where('relation_id', $husband->id)->first();
+
+                            if(!$sug_check){
+                                DB::table('suggetions')->insert(array('user_id' => $user->id, 'relation_id' => $husband->id, 'match_percentage' => $percentage ,'name' =>$husband->name, 'relation' => 'Husband'));
+                            }
                                     $final_suggetions['husband'.$husband_count] =  $husband->name;
                                     $final_suggetions['husband %'.$husband_count] = $percentage;
                                 }
@@ -105,6 +119,11 @@ class SuggetionController extends Controller
                             foreach($check as $br){
                                 similar_text($user->name, $br->name, $percentage);
                                 if ($percentage >= 70) {
+                                    $sug_check = DB::table('suggetions')->where('user_id', $user->id)->where('relation_id', $brother->id)->first();
+
+                                    if(!$sug_check){
+                                        DB::table('suggetions')->insert(array('user_id' => $user->id, 'relation_id' => $brother->id, 'match_percentage' => $percentage ,'name' =>$brother->name, 'relation' => 'Brother'));
+                                    }
                                     $final_suggetions['brother'.$brother_count] =  $brother->name;
                                     $final_suggetions['brother %'.$brother_count] = $percentage;
                                 }
@@ -135,6 +154,11 @@ class SuggetionController extends Controller
                             foreach($check as $br){
                                 similar_text($user->name, $br->name, $percentage);
                                 if ($percentage >= 70) {
+                                    $sug_check = DB::table('suggetions')->where('user_id', $user->id)->where('relation_id', $father->id)->first();
+
+                                    if(!$sug_check){
+                                        DB::table('suggetions')->insert(array('user_id' => $user->id, 'relation_id' => $father->id, 'match_percentage' => $percentage ,'name' =>$father->name, 'relation' => 'Father'));
+                                    }
                                     $final_suggetions['father'.$father_count] =  $father->name;
                                     $final_suggetions['father %'.$father_count] = $percentage;
                                 }
@@ -166,6 +190,11 @@ class SuggetionController extends Controller
                             foreach($check as $br){
                                 similar_text($user->name, $br->name, $percentage);
                                 if ($percentage >= 70) {
+                                    $sug_check = DB::table('suggetions')->where('user_id', $user->id)->where('relation_id', $mother->id)->first();
+
+                                    if(!$sug_check){
+                                        DB::table('suggetions')->insert(array('user_id' => $user->id, 'relation_id' => $mother->id, 'match_percentage' => $percentage ,'name' =>$mother->name, 'relation' => 'Mother'));
+                                    }
                                     $final_suggetions['mother'.$mother_count] =  $mother->name;
                                     $final_suggetions['mother %'.$mother_count] = $percentage;
                                 }
@@ -198,6 +227,11 @@ class SuggetionController extends Controller
                             foreach($check as $br){
                                 similar_text($father->name, $br->name, $percentage);
                                 if ($percentage >= 70) {
+                                    $sug_check = DB::table('suggetions')->where('user_id', $user->id)->where('relation_id', $grand_father->id)->first();
+
+                                    if(!$sug_check){
+                                        DB::table('suggetions')->insert(array('user_id' => $user->id, 'relation_id' => $grand_father->id, 'match_percentage' => $percentage ,'name' =>$grand_father->name, 'relation' => 'Grand_Father'));
+                                    }
                                     $final_suggetions['grand Father'.$grand_father_count] =  $grand_father->name;
                                     $final_suggetions['grand Father %'.$grand_father_count] = $percentage;
                                 }
@@ -231,6 +265,11 @@ class SuggetionController extends Controller
                             foreach($check as $br){
                                 similar_text($father->name, $br->name, $percentage);
                                 if ($percentage >= 70) {
+                                    $sug_check = DB::table('suggetions')->where('user_id', $user->id)->where('relation_id', $grand_mother->id)->first();
+
+                                    if(!$sug_check){
+                                        DB::table('suggetions')->insert(array('user_id' => $user->id, 'relation_id' => $grand_mother->id, 'match_percentage' => $percentage ,'name' =>$grand_mother->name, 'relation' => 'Grand_Mother'));
+                                    }
                                     $final_suggetions['grand Father'.$grand_father_count] =  $grand_father->name;
                                     $final_suggetions['grand Father %'.$grand_father_count] = $percentage;
                                 }
