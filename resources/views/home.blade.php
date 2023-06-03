@@ -1,7 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
+@if (\Session::has('success'))
+<div class="alert alert-success" role="alert">
 
+    {!! \Session::get('success') !!}
+
+</div>
+@endif
+@if ($errors->any())
+<div class="alert alert-danger">
+    <strong>Whoops!</strong> There were some problems with your Post.<br><br>
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
 <div class="content-page-box-area">
     <div class="row">
         <div class="col-lg-3 col-md-12">
@@ -207,12 +223,14 @@
 
         <div class="col-lg-6 col-md-12">
             <div class="news-feed-area">
+
                 <div class="news-feed news-feed-form">
                     <h3 class="news-feed-title">Create New Post</h3>
 
-                    <form>
+                    <form action="{{route('post.store')}}" enctype="multipart/form-data" method="post">
+                        @csrf
                         <div class="form-group">
-                            <textarea name="message" class="form-control" placeholder="Write something here..."></textarea>
+                            <textarea name="post" class="form-control" placeholder="Write something here..." required></textarea>
                             <img id="output" class="mt-2"/>
                             <video id="video-output" class="mt-2 w-100" controls style="display: none"></video>
                         </div>
@@ -225,9 +243,9 @@
                                 <label for="videoselect" class="cursor-pointer"><i class="flaticon-video i-video"></i> Video</label>
                                 <input type="file" name="video" id="videoselect" class="d-none" accept="video/mp4,video/mkv, video/x-m4v,video/*">
                             </li>
-                            <li class="tag-btn">
+                            {{-- <li class="tag-btn">
                                 <button type="submit"><i class="flaticon-tag"></i> Tag Friends</button>
-                            </li>
+                            </li> --}}
                             <li class="post-btn">
                                 <button type="submit">Post</button>
                             </li>
@@ -297,15 +315,24 @@
                         </div>
                     </div>
                 </div>
+@foreach ($posts as $post)
+
 
                 <div class="news-feed news-feed-post">
                     <div class="post-header d-flex justify-content-between align-items-center">
                         <div class="image">
-                            <a href="my-profile.html"><img src="assets/images/user/user-32.jpg" class="rounded-circle" alt="image"></a>
+                            <a href="my-profile.html">
+                                @if ($post->profile_img==null)
+                                <img src="{{asset('assets/images/frontend/images/user.png')}}" class="rounded-circle" alt="image">
+                               @else
+                               <img src="{{asset('assets/frontend/images/profile'.$post->profile_img)}}" class="rounded-circle" alt="image">
+                                @endif
+
+                            </a>
                         </div>
                         <div class="info ms-3">
-                            <span class="name"><a href="my-profile.html">Julie R. Morleyv</a></span>
-                            <span class="small-text"><a href="#">10 Mins Ago</a></span>
+                            <span class="name"><a href="my-profile.html">{{$post->name}}</a></span>
+                            <span class="small-text">10 Mins Ago</span>
                         </div>
                         <div class="dropdown">
                             <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flaticon-menu"></i></button>
@@ -318,10 +345,22 @@
                     </div>
 
                     <div class="post-body">
-                        <p>Donec rutrum congue leo eget malesuada. Nulla quis lorem ut libero malesuada feugiat. Donec rutrum congue leo eget malesuada. Donec rutrum congue leo eget malesuada. Praesent sapien massa convallis a pellentesque nec egestas non nisi. Curabitur non nulla sit amet nisl tempus convallis quis.</p>
+                        <p>{{$post->post}}</p>
+                        @if ($post->image!=null)
                         <div class="post-image">
-                            <img src="assets/images/news-feed-post/post-1.jpg" alt="image">
+                            <img src="{{asset('assets/frontend/images/post/'.$post->image)}}" alt="image">
                         </div>
+                        @endif
+                        @if ($post->video!=null)
+                        <div class="post-image">
+                            <video class="w-100" controls>
+                                <source src="{{asset('assets/frontend/images/post/'.$post->video)}}" type="video/mp4">
+
+                              </video>
+
+                        </div>
+                        @endif
+
                         <ul class="post-meta-wrap d-flex justify-content-between align-items-center">
                             <li class="post-react">
                                 <a href="#"><i class="flaticon-like"></i><span>Like</span> <span class="number">1499 </span></a>
@@ -421,7 +460,7 @@
                         </form>
                     </div>
                 </div>
-
+                @endforeach
                 <div class="news-feed news-feed-post">
                     <div class="post-header d-flex justify-content-between align-items-center">
                         <div class="image">

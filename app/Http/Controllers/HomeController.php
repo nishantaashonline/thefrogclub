@@ -22,7 +22,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $posts = User::where('users.id',Auth::user()->id)->join('posts', 'users.id', '=', 'posts.user_id')->orderBy('posts.id', 'desc')->get(['users.*', 'posts.*']);
+
+        return view('home',compact('posts'));
     }
     public function basicprofile()
     {

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\FamilyController;
+use App\Http\Controllers\PostController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -56,6 +57,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/you-have-brother', [HomeController::class, 'youhavebrother'])->name('you.have.brother');
     Route::get('/you-have-sister', [HomeController::class, 'youhavesister'])->name('you.have.sister');
     Route::get('/you-have-child', [HomeController::class, 'youhavechild'])->name('you.have.child');
+    Route::resource('post', PostController::class);
 
 });
 
