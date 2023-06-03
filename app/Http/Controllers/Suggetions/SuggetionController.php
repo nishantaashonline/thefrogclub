@@ -210,7 +210,39 @@ class SuggetionController extends Controller
             }
 
             // End Grand Father
+            // Grand Mother
 
+            elseif ($data->relation == 'Grand_Mother') {
+
+                $grand_mothers = DB::table('users')
+                    ->where('name', 'LIKE', '%' . $data->name . '%')
+                    ->get();
+
+
+                foreach ($grand_mothers as $grand_mother) {
+                    if ($grand_mother) {
+                        $father = DB::table('family_members')->where('relation', 'Father')->where('user_id', $data->user_id)->first();
+                        $check = DB::table('family_members')
+                            ->where('user_id', $grand_mother->id)
+                            ->where('relation', 'Child')
+                            ->get();
+                        $count = $check->count();
+                        if($count > 0){
+                            foreach($check as $br){
+                                similar_text($father->name, $br->name, $percentage);
+                                if ($percentage >= 70) {
+                                    $final_suggetions['grand Father'.$grand_father_count] =  $grand_father->name;
+                                    $final_suggetions['grand Father %'.$grand_father_count] = $percentage;
+                                }
+                            }
+
+                        }
+                    }
+                }
+                $grand_father_count++;
+            }
+
+            // End Grand Mother
 
 
         }
