@@ -449,8 +449,8 @@
                                 <a href="#">More Comments+</a>
                             </div>
                         </div>
-                        <form class="post-footer"  method="post">
-                            @csrf
+                        <div class="post-footer">
+
                             <input type="hidden" name="post_id" value="{{$post->id}}">
                             <div class="footer-image">
                                 <a href="#">
@@ -458,12 +458,10 @@
                                 </a>
                             </div>
                             <div class="form-group">
-                                <textarea name="comment" class="form-control" placeholder="Write a comment..." required>
-
-                                </textarea>
-                                <label><button type="submit"><i class="flaticon-comment-1"></i></button></label>
+                                <textarea name="comment" id="comment{{$post->id}}" class="form-control" placeholder="Write a comment..." ></textarea>
+                                <label><a type="button" onclick="commnetform({{$post->id}})"><i class="flaticon-comment-1"></i></a></label>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
                 @endforeach
@@ -958,7 +956,7 @@
             </div>
             <div class="chat-item">
                 <a href="#"><img src="assets/images/user/user-9.jpg" class="rounded-circle" alt="image"></a>
-                <span class="name"><a href="#">Maria Smith</a></span>
+                <span class="name"><a href="#">Mariaons Smith</a></span>
                 <span class="status-online"></span>
             </div>
             <div class="chat-item">
@@ -1110,5 +1108,25 @@ inputFile.addEventListener("change", function(){
     video.setAttribute("src", videourl);
     // video.play();
 })
+
+
+
+function commnetform(id){
+
+comment=$('#comment'+id).val();
+post_id=id;
+if(comment!=""){
+    $.ajax({
+    type: "GET",
+    url: "{{route('post.comment.store')}}",
+    data: {comment,post_id},
+
+    success: function(result){
+        alert(result);
+        console.log(result);
+    }
+});
+}
+}
     </script>
     @endsection
