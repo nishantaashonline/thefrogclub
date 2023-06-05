@@ -424,7 +424,7 @@
                                         <a href="mailto:matthew507@gmail.com">matthew507@gmail.com</a>
                                     </div>
                                     <ul class="profile-body">
-                                        <li><i class="flaticon-user"></i> <a href="my-profile.html">My Profile</a></li>
+                                        <li><i class="flaticon-user"></i> <a href="{{route('profile.index')}}">My Profile</a></li>
                                         <li><i class="flaticon-settings"></i> <a href="setting.html">Setting</a></li>
                                         <li><i class="flaticon-privacy"></i> <a href="privacy.html">Privacy</a></li>
                                         <li><i class="flaticon-information"></i> <a href="help-and-support.html">Help & Support</a></li>

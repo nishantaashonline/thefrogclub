@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\FamilyController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProfileController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -59,7 +60,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/you-have-child', [HomeController::class, 'youhavechild'])->name('you.have.child');
     Route::get('/commentstore', [PostController::class, 'commentstore'])->name('post.comment.store');
     Route::get('/likestore', [PostController::class, 'likestore'])->name('post.like.store');
-    Route::resource('post', PostController::class);
+    Route::post('/editprofilestore', [PostController::class, 'editprofilestore'])->name('edit.profile.store');
+    Route::post('/update-coverphoto', [ProfileController::class, 'updatecoverphoto'])->name('update.coverphoto');
+    Route::post('/update-about', [ProfileController::class, 'updateabout'])->name('update.about');
+    Route::get('/edit-about', [ProfileController::class, 'editabout'])->name('edit.about');
+    Route::resource('profile', ProfileController::class);
 
 });
 
