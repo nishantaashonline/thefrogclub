@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Models\Post;
 use App\Models\PostComment;
+use App\Models\PostLike;
+use Carbon\Carbon;
 class PostController extends Controller
 {
     /**
@@ -27,6 +29,34 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+    public function likestore(Request $request)
+
+{
+    $post_id=$request->post_id;
+
+    $user_id=Auth::user()->id;
+
+    $previous=PostLike::where('user_id',$user_id)->where('post_id',$post_id)->first();
+    if($previous!=null){
+        if($previous->status==0){
+            PostLike::where('id',$previous->id)->update(['status'=>1]);
+        $data['status']=1;
+        }
+        if($previous->status==1){
+            PostLike::where('id',$previous->id)->update(['status'=>0]);
+            $data['status']=0;
+        }
+    }else{
+        PostLike::create(['user_id'=>$user_id,'post_id'=>$post_id,'status'=>1]);
+        $data['status']=1;
+    }
+$totallike=PostLike::where('post_id',$post_id)->where('status',1)->count();
+
+$data['total']=$totallike;
+
+return response()->json($data);
+}
+
     public function commentstore(Request $request)
     {
 $post_id=$request->post_id;
@@ -39,7 +69,12 @@ if(Auth::user()->profile_img==null){
     $profile=asset('assets/frontend/images/profile/'.Auth::user()->profile_img);
 }
 $data = PostComment::create(['user_id'=>$user_id,'post_id'=>$post_id,'comment'=>$comment,'status'=>1]);
-dd($data);
+
+$createdate = $data->created_at->toDateTimeString();
+$mytime = Carbon::now();
+
+$diff_in_min = $mytime->diffInMinutes($createdate);
+
 echo '   <div class="comment-list">
 <div class="comment-image">
     <a href="my-profile.html"><img src="'.$profile.'" class="rounded-circle" alt="image"></a>
@@ -48,7 +83,7 @@ echo '   <div class="comment-list">
     <h3>
         <a href="my-profile.html">'.$name.'</a>
     </h3>
-    <span>5 Mins Ago</span>
+    <span>'.$diff_in_min.' Mins Ago</span>
     <p>'.$comment.'</p>
 
 </div>

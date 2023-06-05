@@ -58,6 +58,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/you-have-sister', [HomeController::class, 'youhavesister'])->name('you.have.sister');
     Route::get('/you-have-child', [HomeController::class, 'youhavechild'])->name('you.have.child');
     Route::get('/commentstore', [PostController::class, 'commentstore'])->name('post.comment.store');
+    Route::get('/likestore', [PostController::class, 'likestore'])->name('post.like.store');
     Route::resource('post', PostController::class);
 
 });
