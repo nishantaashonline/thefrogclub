@@ -496,7 +496,17 @@ $diff_in_min_p = $ctime->diffInDays($post->created_at);
 
         <div class="col-lg-3 col-md-12">
             <aside class="widget-area">
-
+                {{-- <div class="widget widget-weather">
+                    <div class="weather-image">
+                        <a href="#"><img src="assets/images/weather/weather.jpg" alt="image"></a>
+                    </div>
+                </div> --}}
+                <div class="widget widget-birthday">
+                    <div class="birthday-title d-flex justify-content-between align-items-center">
+                        <h3>Family Members</h3>
+                        <span><a href="#">See All</a></span>
+                    </div>
+                </div>
                 <div class="widget widget-birthday">
                     <div class="birthday-title d-flex justify-content-between align-items-center">
                         <h3>Today Birthdays</h3>

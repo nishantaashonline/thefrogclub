@@ -25,6 +25,10 @@ return new class extends Migration
             $table->string('birth_city')->nullable();
             $table->string('birth_state')->nullable();
             $table->string('birth_country')->nullable();
+            $table->string('married')->nullable();
+            $table->string('gender')->nullable();
+            $table->string('coverphoto')->nullable();
+            $table->text('about')->nullable();
             $table->timestamps();
         });
     }

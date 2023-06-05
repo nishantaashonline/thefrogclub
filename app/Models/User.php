@@ -30,6 +30,8 @@ class User extends Authenticatable
         'birth_country',
         'married',
         'gender',
+        'coverphoto',
+        'about',
     ];
 
     /**
