@@ -59,144 +59,37 @@
                                         <h3>Friend Requests</h3>
                                         <i class="flaticon-menu"></i>
                                     </div>
+                                    @php
+                                        $requests = DB::table('friend_requests')->where('receiver_id', auth()->user()->id)->get();
+
+                                    @endphp
+
 
                                     <div class="friend-requests-body" data-simplebar>
-                                        <div class="item d-flex align-items-center">
+                                        @foreach ($requests as $request)
+                                        @php
+                                            $user = DB::table('users')->where('id', $request->user_id)->first();
+
+                                        @endphp
+                                        <div class="item d-flex align-items-center" id="{{ 'req'.$request->id }}">
                                             <div class="figure">
-                                                <a href="#"><img src="assets/images/user/user-2.jpg" class="rounded-circle" alt="image"></a>
+                                                <a href="#"><img src="{{ asset('assets/images/frontend/images/'.$user->profile_img) }}" class="rounded-circle" alt="image"></a>
                                             </div>
 
                                             <div class="content d-flex justify-content-between align-items-center">
                                                 <div class="text">
-                                                    <h4><a href="#">Sandra Cross</a></h4>
-                                                    <span>26 Friends</span>
+                                                    <h4><a href="#">{{ $user->name }}</a></h4>
+
                                                 </div>
                                                 <div class="btn-box d-flex align-items-center">
-                                                    <button class="delete-btn d-inline-block me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" type="button"><i class="ri-close-line"></i></button>
+                                                    <button class="delete-btn d-inline-block me-2" onclick="Delete_Request({{ $request->id }})" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" type="button"><i class="ri-close-line"></i></button>
 
-                                                    <button class="confirm-btn d-inline-block" data-bs-toggle="tooltip" data-bs-placement="top" title="Confirm" type="button"><i class="ri-check-line"></i></button>
+                                                    <button class="confirm-btn d-inline-block" onclick="Approve_Request({{ $request->id }})" data-bs-toggle="tooltip" data-bs-placement="top" title="Confirm" type="button"><i class="ri-check-line"></i></button>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="item d-flex align-items-center">
-                                            <div class="figure">
-                                                <a href="#"><img src="assets/images/user/user-3.jpg" class="rounded-circle" alt="image"></a>
-                                            </div>
+                                        @endforeach
 
-                                            <div class="content d-flex justify-content-between align-items-center">
-                                                <div class="text">
-                                                    <h4><a href="#">Kenneth Crowe</a></h4>
-                                                    <span>53 Friends</span>
-                                                </div>
-                                                <div class="btn-box d-flex align-items-center">
-                                                    <button class="delete-btn d-inline-block me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" type="button"><i class="ri-close-line"></i></button>
-
-                                                    <button class="confirm-btn d-inline-block" data-bs-toggle="tooltip" data-bs-placement="top" title="Confirm" type="button"><i class="ri-check-line"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item d-flex align-items-center">
-                                            <div class="figure">
-                                                <a href="#"><img src="assets/images/user/user-4.jpg" class="rounded-circle" alt="image"></a>
-                                            </div>
-
-                                            <div class="content d-flex justify-content-between align-items-center">
-                                                <div class="text">
-                                                    <h4><a href="#">Andrea Harwell</a></h4>
-                                                    <span>99 Friends</span>
-                                                </div>
-                                                <div class="btn-box d-flex align-items-center">
-                                                    <button class="delete-btn d-inline-block me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" type="button"><i class="ri-close-line"></i></button>
-
-                                                    <button class="confirm-btn d-inline-block" data-bs-toggle="tooltip" data-bs-placement="top" title="Confirm" type="button"><i class="ri-check-line"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item d-flex align-items-center">
-                                            <div class="figure">
-                                                <a href="#"><img src="assets/images/user/user-5.jpg" class="rounded-circle" alt="image"></a>
-                                            </div>
-
-                                            <div class="content d-flex justify-content-between align-items-center">
-                                                <div class="text">
-                                                    <h4><a href="#">John Lago</a></h4>
-                                                    <span>18 Friends</span>
-                                                </div>
-                                                <div class="btn-box d-flex align-items-center">
-                                                    <button class="delete-btn d-inline-block me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" type="button"><i class="ri-close-line"></i></button>
-
-                                                    <button class="confirm-btn d-inline-block" data-bs-toggle="tooltip" data-bs-placement="top" title="Confirm" type="button"><i class="ri-check-line"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item d-flex align-items-center">
-                                            <div class="figure">
-                                                <a href="#"><img src="assets/images/user/user-6.jpg" class="rounded-circle" alt="image"></a>
-                                            </div>
-
-                                            <div class="content d-flex justify-content-between align-items-center">
-                                                <div class="text">
-                                                    <h4><a href="#">Sandra Cross</a></h4>
-                                                    <span>26 Friends</span>
-                                                </div>
-                                                <div class="btn-box d-flex align-items-center">
-                                                    <button class="delete-btn d-inline-block me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" type="button"><i class="ri-close-line"></i></button>
-
-                                                    <button class="confirm-btn d-inline-block" data-bs-toggle="tooltip" data-bs-placement="top" title="Confirm" type="button"><i class="ri-check-line"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item d-flex align-items-center">
-                                            <div class="figure">
-                                                <a href="#"><img src="assets/images/user/user-7.jpg" class="rounded-circle" alt="image"></a>
-                                            </div>
-
-                                            <div class="content d-flex justify-content-between align-items-center">
-                                                <div class="text">
-                                                    <h4><a href="#">Kenneth Crowe</a></h4>
-                                                    <span>53 Friends</span>
-                                                </div>
-                                                <div class="btn-box d-flex align-items-center">
-                                                    <button class="delete-btn d-inline-block me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" type="button"><i class="ri-close-line"></i></button>
-
-                                                    <button class="confirm-btn d-inline-block" data-bs-toggle="tooltip" data-bs-placement="top" title="Confirm" type="button"><i class="ri-check-line"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item d-flex align-items-center">
-                                            <div class="figure">
-                                                <a href="#"><img src="assets/images/user/user-8.jpg" class="rounded-circle" alt="image"></a>
-                                            </div>
-
-                                            <div class="content d-flex justify-content-between align-items-center">
-                                                <div class="text">
-                                                    <h4><a href="#">Andrea Harwell</a></h4>
-                                                    <span>99 Friends</span>
-                                                </div>
-                                                <div class="btn-box d-flex align-items-center">
-                                                    <button class="delete-btn d-inline-block me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" type="button"><i class="ri-close-line"></i></button>
-
-                                                    <button class="confirm-btn d-inline-block" data-bs-toggle="tooltip" data-bs-placement="top" title="Confirm" type="button"><i class="ri-check-line"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item d-flex align-items-center">
-                                            <div class="figure">
-                                                <a href="#"><img src="assets/images/user/user-9.jpg" class="rounded-circle" alt="image"></a>
-                                            </div>
-
-                                            <div class="content d-flex justify-content-between align-items-center">
-                                                <div class="text">
-                                                    <h4><a href="#">John Lago</a></h4>
-                                                    <span>18 Friends</span>
-                                                </div>
-                                                <div class="btn-box d-flex align-items-center">
-                                                    <button class="delete-btn d-inline-block me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" type="button"><i class="ri-close-line"></i></button>
-
-                                                    <button class="confirm-btn d-inline-block" data-bs-toggle="tooltip" data-bs-placement="top" title="Confirm" type="button"><i class="ri-check-line"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
                                         <div class="view-all-requests-btn">
                                             <a href="friends.html" class="default-btn">View All Requests</a>
                                         </div>
@@ -525,23 +418,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="item d-flex align-items-center">
-                                                <div class="figure">
-                                                    <a href="#"><img src="assets/images/user/user-5.jpg" class="rounded-circle" alt="image"></a>
-                                                </div>
 
-                                                <div class="content d-flex justify-content-between align-items-center">
-                                                    <div class="text">
-                                                        <h4><a href="#">John Lago</a></h4>
-                                                        <span>18 Friends</span>
-                                                    </div>
-                                                    <div class="btn-box d-flex align-items-center">
-                                                        <button class="delete-btn d-inline-block me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" type="button"><i class="ri-close-line"></i></button>
-
-                                                        <button class="confirm-btn d-inline-block" data-bs-toggle="tooltip" data-bs-placement="top" title="Confirm" type="button"><i class="ri-check-line"></i></button>
-                                                    </div>
-                                                </div>
-                                            </div>
                                             <div class="view-all-requests-btn">
                                                 <a href="friends.html" class="default-btn">View All Requests</a>
                                             </div>
@@ -734,7 +611,48 @@
         @csrf
     </form>
 
+    <script>
 
+        function Delete_Request(id){
+            $.ajax
+            ({
+            type: "GET",
+            url: "{{ route('delete_request') }}",
+            data: {id: id},
+            success: function(response)
+            {
+
+                var elem = document.getElementById("req"+id);
+
+
+                    elem.innerHTML = 'Deleted successfully';
+
+
+            }
+            });
+        }
+
+
+        function Approve_Request(id){
+            $.ajax
+            ({
+            type: "GET",
+            url: "{{ route('approve_request') }}",
+            data: {id: id},
+            success: function(response)
+            {
+
+                var elem = document.getElementById("req"+id);
+
+
+                elem.innerHTML = 'Accepted successfully';
+                location.reload();
+            }
+            });
+
+        }
+
+    </script>
 
 
 
