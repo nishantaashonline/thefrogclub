@@ -69,6 +69,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/update-about', [ProfileController::class, 'updateabout'])->name('update.about');
     Route::get('/edit-about', [ProfileController::class, 'editabout'])->name('edit.about');
     Route::resource('profile', ProfileController::class);
+    Route::resource('post', PostController::class);
 
 
     // Suggestins
