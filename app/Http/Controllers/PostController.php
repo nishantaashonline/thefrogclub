@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\Post;
+use App\Models\PostComment;
 class PostController extends Controller
 {
     /**
@@ -28,7 +29,30 @@ class PostController extends Controller
      */
     public function commentstore(Request $request)
     {
+$post_id=$request->post_id;
+$comment=$request->comment;
+$user_id=Auth::user()->id;
+$name=Auth::user()->name;
+if(Auth::user()->profile_img==null){
+    $profile=asset('assets/frontend/images/user.png');
+}else{
+    $profile=asset('assets/frontend/images/profile/'.Auth::user()->profile_img);
+}
+$data = PostComment::create(['user_id'=>$user_id,'post_id'=>$post_id,'comment'=>$comment,'status'=>1]);
+dd($data);
+echo '   <div class="comment-list">
+<div class="comment-image">
+    <a href="my-profile.html"><img src="'.$profile.'" class="rounded-circle" alt="image"></a>
+</div>
+<div class="comment-info">
+    <h3>
+        <a href="my-profile.html">'.$name.'</a>
+    </h3>
+    <span>5 Mins Ago</span>
+    <p>'.$comment.'</p>
 
+</div>
+</div>';
     }
     public function store(Request $request)
     {
