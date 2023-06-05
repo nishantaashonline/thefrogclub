@@ -298,9 +298,21 @@
                                         </li>
 
                                     </ul>
+                                    @php
 
+                                        $check = DB::table('friend_requests')->where('user_id',auth()->user()->id)->where('receiver_id',$suggetion->relation_id)->first();
+                                        if($check){
+                                            if($check->status == 0){
+                                                $btn_text = 'Cancel Request';
+                                            }else{
+                                                $btn_text = 'Send Request';
+                                            }
+                                        }else{
+                                            $btn_text = 'Send Request';
+                                        }
+                                    @endphp
                                     <div class="profile-btn">
-                                        <button onclick="Request({{ $suggetion->id }})" class="default-btn">Send Request</button>
+                                        <button onclick="Request({{ $suggetion->id }})" id="{{ 'request'.$suggetion->id }}" class="default-btn">{{ $btn_text }}</button>
                                     </div>
                                 </div>
 
@@ -1140,7 +1152,15 @@ if(comment!=""){
             data: {id: id},
             success: function(response)
             {
-                alert(response);
+
+                var elem = document.getElementById("request"+id);
+                console.log(elem);
+                if(response == 0){
+                    elem.innerHTML = 'Cancel Request';
+                }else if(response == 1){
+                    elem.innerHTML = 'Send Request';
+                }
+                console.log(response);
             }
             });
 

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('user_id')->nullable();
             $table->string('receiver_id')->nullable();
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }

@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class FriendRequest extends Model
 {
+
     use HasFactory;
+    protected $fillable = ['user_id','receiver_id','status'];
 }

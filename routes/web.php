@@ -69,6 +69,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/suggetions', [SuggetionController::class, 'suggetions'])->name('suggetions');
     Route::get('Request-Sent', [RequestController::class, 'request_sent'])->name('request_sent');
+    Route::get('Delete-Request', [RequestController::class, 'delete_request'])->name('delete_request');
+    Route::get('Approve-Request', [RequestController::class, 'approve_request'])->name('approve_request');
     // End Suggestins
 
 });
