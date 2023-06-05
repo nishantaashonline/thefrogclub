@@ -9025,4 +9025,8 @@ Profile Authentication Area CSS
 
    cursor: pointer;
 }
+.max-h-300{
+    max-height: 300px;
+    overflow-y: auto;
+}
 /*# sourceMappingURL=style.css.map */
