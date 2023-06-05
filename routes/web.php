@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\FamilyController;
 use App\Http\Controllers\Suggetions\SuggetionController;
-
+use App\Http\Controllers\RequestController;
 
 
 use App\Http\Controllers\PostController;
@@ -68,7 +68,7 @@ Route::group(['middleware' => ['auth']], function () {
     // Suggestins
 
     Route::get('/suggetions', [SuggetionController::class, 'suggetions'])->name('suggetions');
-
+    Route::get('Request-Sent', [RequestController::class, 'request_sent'])->name('request_sent');
     // End Suggestins
 
 });

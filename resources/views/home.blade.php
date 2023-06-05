@@ -300,7 +300,7 @@
                                     </ul>
 
                                     <div class="profile-btn">
-                                        <a href="my-profile.html" class="default-btn">Send Request</a>
+                                        <button onclick="Request({{ $suggetion->id }})" class="default-btn">Send Request</button>
                                     </div>
                                 </div>
 
@@ -1129,4 +1129,23 @@ if(comment!=""){
 }
 }
     </script>
+
+    <script>
+        function Request(id){
+
+        $.ajax
+            ({
+            type: "GET",
+            url: "{{ route('request_sent') }}",
+            data: {id: id},
+            success: function(response)
+            {
+                alert(response);
+            }
+            });
+
+            console.log(id);
+        }
+    </script>
+
     @endsection
